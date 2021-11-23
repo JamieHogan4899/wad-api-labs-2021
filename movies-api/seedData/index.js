@@ -1,7 +1,8 @@
 import userModel from '../api/users/userModel';
 import users from './users';
 import dotenv from 'dotenv';
-
+import genres from './genres';
+import genreModel from '../api/genres/genreModel';
 dotenv.config();
 
 // deletes all user documents in collection and inserts test data
@@ -19,3 +20,21 @@ async function loadUsers() {
 if (process.env.SEED_DB) {
   loadUsers();
 }
+
+
+
+// deletes all genres in collection and inserts test data
+async function loadGenres() {
+    console.log('load genre Data');
+    try {
+      await genreModel.deleteMany();
+      await genreModel.collection.insertMany(genres);
+      console.info(`${genres.length} users were successfully stored.`);
+    } catch (err) {
+      console.error(`failed to Load user Data: ${err}`);
+    }
+  }
+  
+  if (process.env.SEED_DB) {
+    loadGenres();
+  }
