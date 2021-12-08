@@ -23,23 +23,6 @@ router.get('/', asyncHandler(async (req, res) => {
 
 
 // Get movie details
-router.get('/:id', asyncHandler(async (req, res) => {
-
-    const id = parseInt(req.params.id);
-
-    const movie = await movieModel.findByMovieDBId(id);
-
-    if (movie) {
-
-        res.status(200).json(movie);
-
-    } else {
-
-        res.status(404).json({message: 'The resource you requested could not be found.', status_code: 404});
-
-    }
-
-}));
 
 
 
