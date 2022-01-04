@@ -56,3 +56,4 @@ if (process.env.SEED_DB) {
   loadGenres();//you may not need this line if you skipped the exercises
   loadMovies();//ADD THIS LINE
 }
+

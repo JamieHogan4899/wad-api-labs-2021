@@ -7,7 +7,47 @@ import uniqid from 'uniqid';
     getUpcomingMovies
   } from '../tmdb-api';
 
+  import {
+    getMovies
+  } from '../tmdb-api';
+
+  import {
+    getTrendingMovies
+  } from '../tmdb-api';
+
+  import {
+    getTvShows
+  } from '../tmdb-api';
+
+  import {
+    getTvGenres
+  } from '../tmdb-api';
+
+  import {
+    getGenres
+  } from '../tmdb-api';
+
+  import {
+    getMovie
+  } from '../tmdb-api';
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
 const router = express.Router(); 
+
+
+
 
 router.get('/', asyncHandler(async (req, res) => {
     let { page = 1, limit = 10 } = req.query; // destructure page and limit and set default values
@@ -44,6 +84,8 @@ router.get('/:id/reviews', (req, res) => {
 
 
 
+
+
 router.post('/:id/reviews', (req, res) => {
     const id = parseInt(req.params.id);
 
@@ -66,4 +108,59 @@ router.get('/tmdb/upcoming', asyncHandler( async(req, res) => {
     const upcomingMovies = await getUpcomingMovies();
     res.status(200).json(upcomingMovies);
   }));
+
+  router.get('/tmdb/discover', asyncHandler( async(req, res) => {
+    const discoverMovies = await getMovies();
+    res.status(200).json(discoverMovies);
+  }));
+
+  router.get('/tmdb/trending', asyncHandler( async(req, res) => {
+    const trendingMovies = await getTrendingMovies();
+    res.status(200).json(trendingMovies);
+  }));
+
+  router.get('/tmdb/tvShows', asyncHandler( async(req, res) => {
+    const tvShows = await getTvShows();
+    res.status(200).json(tvShows);
+  }));
+
+  router.get('/tmdb/tvGenres', asyncHandler( async(req, res) => {
+    const tvGenres = await getTvGenres();
+    res.status(200).json(tvGenres);
+  }));
+
+  router.get('/tmdb/movieGenres', asyncHandler( async(req, res) => {
+    const movieGenres = await getGenres();
+    res.status(200).json(movieGenres);
+  }));
+
+
+
+
+
+  
+  
+  
+
+
+ 
+
+
+
+
+  
+
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+  
 export default router;
